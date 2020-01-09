@@ -1,10 +1,13 @@
-import { Controller, Get } from "@overnightjs/core";
-import { Request, Response} from "express";
+import { Request, Response, Router } from "express";
+import Controller from "./controller";
 
-@Controller('/')
-export class MainController {
-    @Get()
-    get(req: Request, res: Response): any {
-        res.render('index')
+export default class IndexController extends Controller {
+    constructor() {
+        super();
+    }
+    protected routes(): void {
+        this.get('/', (req: Request, res: Response) => {
+            res.render('index');
+        });
     }
 }

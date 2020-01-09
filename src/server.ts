@@ -1,25 +1,25 @@
-import { Server } from "@overnightjs/core";
-import * as controllers from "./controllers";
 import * as path from "path";
+import { Application } from "express";
+import express from 'express';
+import IndexController from './controllers/index';
+import TestController from "./controllers/test";
 
-export default class AppServer extends Server {
+
+export default class AppServer {
+    public app: Application
     constructor() {
-        super();
+        this.app = express();
         this.setupControllers();
         this.app.set('views', path.join(__dirname, 'views'));
         this.app.set('view engine', 'ejs');
+        this.app.use(express.static('public'))
     }
 
     private setupControllers(): void {
-        const controllerInstances = [];
-        for (const name of Object.keys(controllers)) {
-            const controller = (controllers as any)[name];
-            if (typeof controller === 'function') {
-                controllerInstances.push(new controller());
-            }
-        }
-        super.addControllers(controllerInstances);
+        this.app.use((new IndexController()).router);
+        this.app.use((new TestController()).router);
     }
+
     public start(port: number) {
         this.app.listen(port, () => {
             console.log(`Server listening on port: ${port}`);
