@@ -12,7 +12,7 @@ export default class AppServer {
         this.setupControllers();
         this.app.set('views', path.join(__dirname, 'views'));
         this.app.set('view engine', 'ejs');
-        this.app.use(express.static('public'))
+        this.app.use('/static', express.static(path.join(__dirname, 'public')));
     }
 
     private setupControllers(): void {
