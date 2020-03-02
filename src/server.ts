@@ -3,6 +3,7 @@ import { Application } from "express";
 import express from 'express';
 import IndexController from './controllers/index';
 import TestController from "./controllers/test";
+import PostController from './controllers/post';
 
 
 export default class AppServer {
@@ -18,6 +19,7 @@ export default class AppServer {
     private setupControllers(): void {
         this.app.use((new IndexController()).router);
         this.app.use((new TestController()).router);
+        this.app.use((new PostController()).router);
     }
 
     public start(port: number) {

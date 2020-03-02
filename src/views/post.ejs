@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./partials/head') %>
+    <title><%- id %></title>
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+    <div class="container px-0">
+        <div class="row justify-content-center my-4 mx-1">
+            <div class="col-sm-12 col-md-8">
+            </div>
+            <div class="col-sm-12 col-md-4 ">
+                <div class="sidebar">
+                    <div class="bio-box text-center">
+                        <img class="img-fluid bio-avt"
+                            src="https://colorlib.com/preview/theme/wordify/images/person_1.jpg" />
+                        <div class="bio-body">
+                            <h2>Tran Trung Hieu</h2>
+                            <p>It uses utility classes for typography and spacing to space content out within the larger
+                                container.</p>
+                            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                        </div>
+                    </div>
+                    <div class="widget-title">
+                        <h2>
+                            <span>Thông tin liên hệ</span>
+                        </h2>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://fb.me/trunghieu2570" target="_blank" class="facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>fb.me/trunghieu2570</span>
+                        </a>
+                        <a href="https://github.com/trunghieu2570" target="_blank" class="github">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/trunghieu2570</span>
+                        </a>
+                    </div>
+                    <div class="widget-title">
+                        <h2>
+                            <span>Bài viết nổi bật</span>
+                        </h2>
+                    </div>
+                    <div class="popular-posts">
+                        <ul>
+                            <% for( let i = 0; i < 4; i++ ) { %>
+                            <li>
+                                <a href="#">
+                                    <img
+                                        src="https://2.bp.blogspot.com/-cyEw8_zGVuQ/WK7ncOuZXQI/AAAAAAAAAPA/0Ayp_7QxCa49coCs3GqEnmELQPg9gN3KQCLcB/s1600/c16.jpg" />
+                                    <div class="pp-body">
+                                        <h5>Hello, world!</h5>
+                                        <div class="pp-meta">
+                                            <span>23 Thg 2, 2019</span> • <span>8:30 PM</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <div class="widget-title">
+                        <h2>
+                            <span>Thể loại</span>
+                        </h2>
+                    </div>
+                    <div class="categories">
+                        <ul>
+                            <% for( let i = 0; i < 4; i++ ) { %>
+                            <li>
+                                <a href="#">Thể loại <%- i %><span>(0)</span></a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <div class="widget-title">
+                        <h2>
+                            <span>Các thẻ</span>
+                        </h2>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                            <% for( let i = 0; i < 10; i++ ) { %>
+                            <li>
+                                <a href="#">Thẻ <%- i %></a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <%- include('./partials/footer') %>
+    </footer>
+</body>
+
+</html>
