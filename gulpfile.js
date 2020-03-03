@@ -11,15 +11,11 @@ var paths = {
 }
 
 
-gulp.task('copy-views', function () {
+gulp.task('cpViews', function () {
     return gulp.src(paths.ejs)
         .pipe(gulp.dest('dist/views'));
 });
 
-gulp.task('copy-webfonts', function () {
-    return gulp.src(paths.webfonts)
-        .pipe(gulp.dest('dist/public/webfonts'));
-});
 gulp.task('sass', function() {
     return gulp.src(paths.scss)
     .pipe(sass().on('error', sass.logError))
@@ -30,7 +26,8 @@ gulp.task('sass:watch', function() {
     return gulp.watch(paths.scss, gulp.series('sass'));
 });
 
-gulp.task('compile', gulp.series(gulp.parallel('copy-views'), gulp.parallel('copy-webfonts'), function () {
+
+gulp.task('compile', gulp.series('cpViews', function () {
     return tsApp.src().pipe(tsApp()).js.pipe(gulp.dest('dist'));
 }));
 

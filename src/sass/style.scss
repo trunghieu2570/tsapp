@@ -10,10 +10,15 @@ $navbar-height: 40px;
 @import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Sarabun&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Roboto:900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/@fortawesome/fontawesome-free/css/all";
 
+body {
+  font-family: Roboto, "Noto Sans", Arial, Helvetica, sans-serif;
+}
+
+//normal img load
 @keyframes fadein {
   from {
     opacity: 0;
@@ -50,6 +55,47 @@ $navbar-height: 40px;
   }
   to {
     opacity: 1;
+  }
+}
+
+//biobox img load
+
+@keyframes bio-fadein {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 30%;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes bio-fadein {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 30%;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes bio-fadein {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 30%;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes bio-fadein {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 30%;
   }
 }
 
@@ -207,8 +253,6 @@ h2 {
   animation: fadein 2s;
 }
 
-
-
 .blog-entries .blog-entry .blog-content {
   //border: 1px solid #efefef;
   padding-top: 14px;
@@ -250,6 +294,8 @@ h2 {
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-size: cover;
+  animation: bio-fadein 5s;
   opacity: 30%;
 }
 
@@ -304,17 +350,16 @@ h2 {
   display: block;
 }
 
-.sidebar .popular-post-item  a {
+.sidebar .popular-post-item a {
   margin-bottom: 15px;
   margin-left: 10px;
   margin-right: 10px;
   position: relative;
   display: block;
   padding: 10px;
-
 }
 
-.sidebar .popular-post-item  a:hover {
+.sidebar .popular-post-item a:hover {
   text-decoration: none;
 }
 
@@ -328,13 +373,13 @@ h2 {
   height: 100%;
 }
 
-.sidebar .popular-post-item  a > h5 {
+.sidebar .popular-post-item a > h5 {
   font-size: 14px;
   color: #fff;
   font-family: "Noto Sans", sans-serif;
 }
 
-.sidebar .popular-post-item  a > .meta {
+.sidebar .popular-post-item a > .meta {
   font-size: 12px;
   font-family: "Inconsolata", monospace;
   color: #fff;
@@ -363,12 +408,25 @@ h2 {
   border-bottom: 1px dotted #d4d4d4;
 }
 
-.sidebar .categories ul li a span {
+.sidebar .categories ul li a .cat-name {
+  color: #fff;
+  background-color: red;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.sidebar .categories ul li a .cat-posts-count {
   position: absolute;
   right: 0;
   top: 0;
-  color: #b9b9b9;
+  color: #bbbbbb;
   font-style: italic;
+  font-size: 16px;
+  font-family: "Inconsolata", monospace;
 }
 
 .sidebar .tags ul {
@@ -383,14 +441,12 @@ h2 {
 
 .sidebar .tags > ul > li > a {
   font-family: "Inconsolata", monospace;
+  font-size: 14px;
   float: left;
   background: #f2f2f2;
-  padding: 2px 6px;
+  padding: 1px 8px;
   border-radius: 4px;
-
 }
-
-
 
 .sidebar .tags ul li a:hover {
   text-decoration: none;
@@ -404,7 +460,7 @@ footer {
 }
 
 footer::before {
-  content: '';
+  content: "";
   height: 6px;
   width: 100%;
   background: linear-gradient(90deg, #3a4cb4 0%, #fd1d1d 100%);
@@ -423,8 +479,6 @@ footer .popular-posts > ul > li > a {
   margin-bottom: 15px;
   color: white;
 }
-
-
 
 footer .popular-posts ul li a:hover {
   text-decoration: none;
