@@ -12,7 +12,7 @@ var paths = {
      'src/server.ts'],
     views: ['src/views/**/*'],
     scss: ['src/sass/**/*.scss'],
-    webfonts: ['src/webfonts/**/*'],
+    webfonts: ['src/assets/webfonts/**/*'],
 }
 
 //copy views
@@ -20,6 +20,11 @@ gulp.task('copy:views', function () {
     return gulp.src(paths.views)
         .pipe(gulp.dest('dist/views'));
 });
+
+gulp.task('copy:webfonts', function () {
+    return gulp.src(paths.webfonts)
+        .pipe(gulp.dest('dist/public/webfonts'))
+})
 
 //compile sass
 gulp.task('compile:sass', function() {
@@ -40,7 +45,8 @@ gulp.task('watch:sass', function() {
 });
 
 gulp.task('watch:copy', function() {
-    return gulp.watch(paths.views, gulp.series('copy:views'));
+    gulp.watch(paths.views, gulp.series('copy:views'));
+    gulp.watch(paths.webfonts, gulp.series('copy:webfonts'));
 });
 
 //watch typescript
@@ -56,7 +62,7 @@ gulp.task('nodemon', function () {
     });
 });
 
-gulp.task('copy', gulp.parallel('copy:views'));
+gulp.task('copy', gulp.parallel('copy:views', 'copy:webfonts'));
 
 gulp.task('watch', gulp.parallel('watch:copy', 'watch:ts', 'watch:sass', 'nodemon'));
 
